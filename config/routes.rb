@@ -4,6 +4,7 @@ Rails.application.routes.draw do
       resources :orders, only: [:create] do #/tables/:id/orders
         member do #post :add, on: :member
           post :add #/tables/:id/orders/:id/add
+          post :pay #/tables/:id/orders/:id/pay
         end
       end
   end
