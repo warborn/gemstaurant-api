@@ -2,14 +2,14 @@ source 'https://rubygems.org'
 
 
 gem 'rails', '4.2.1'
-
 gem 'rails-api'
-
 gem 'spring', :group => :development
-
-
 gem 'sqlite3'
-
+group :test do
+  gem 'minitest-utils', require: 'minitest/utils'
+  gem 'rack-test', require: 'rack/test'
+  gem 'pry'
+end
 
 
 # To use ActiveModel has_secure_password
