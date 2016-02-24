@@ -1,0 +1,12 @@
+Hello <%= @order.name %>
+
+Here is the receipt for your order.
+
+Items
+-----
+
+<% @order.order_items.each do |order_item| %>
+  <%= order_item.quantity %> <%= order_item.item.name%>
+<% end %>
+
+Total: <%= @order.total_amount %>
