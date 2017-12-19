@@ -2,32 +2,39 @@ create_table() {
     curl -v -X POST \
          -H "Content-Type: application/json" \
          -d @bin/table.json \
-         http://localhost:3000/tables
+         http://localhost:3000/tables \
+         | json | pygmentize -l json
 }
 
 create_order() {
     curl -v -X POST \
          -H "Content-Type: application/json" \
          -d @bin/order.json \
-         http://localhost:3000/tables/1/orders
+         http://localhost:3000/tables/1/orders \
+         | json | pygmentize -l json
 }
 
 add_item() {
   curl -v -X POST \
        -H "Content-Type: application/json" \
        -d @bin/add_item.json \
-       http://localhost:3000/tables/1/orders/2/add
+       http://localhost:3000/tables/1/orders/2/add \
+       | json | pygmentize -l json
 }
 
 pay_order() {
   curl -v -X POST \
        -H "Content-Type: application/json" \
        -d @bin/pay_order.json \
-       http://localhost:3000/tables/1/orders/1/pay
+       http://localhost:3000/tables/1/orders/1/pay \
+       | json | pygmentize -l json
 }
 
+
+
 stats() {
-  curl http://localhost:3000/stats
+  curl http://localhost:3000/stats \
+  | json | pygmentize -l json
 }
 
 $1

@@ -25,7 +25,9 @@ class TablesController < ApplicationController
     if @table.save
       render json: @table, status: :created, location: @table
     else
-      render json: @table.errors, status: :unprocessable_entity
+      render status: :unprocessable_entity, json: {
+        errors: @table.errors
+      }
     end
   end
 

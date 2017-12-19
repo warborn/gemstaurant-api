@@ -17,7 +17,9 @@ class OrdersController < ApplicationController
     if @order.save
       render json: @order, status: :created
     else
-      render json: @order.errors, status: :unprocessable_entity
+      render status: :unprocessable_entity, json: {
+        errors: @order.errors
+      }
     end
   end
 
@@ -38,7 +40,7 @@ class OrdersController < ApplicationController
     service.pay params[:amount].to_i, params[:payment_method]
 
     if service.ok?
-      render json: service.receipt, root: true, status: 201 # Content
+      render json: service.receipt, status: 201 # Content
     else
       binding.pry
       render json: service.message, status: 422 # Unprocessable Entity
